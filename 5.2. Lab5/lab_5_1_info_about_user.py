@@ -9,16 +9,19 @@ age = 30
 city = "Kraków"
 
 
-# Wersja skrócona:
-print("Infromacje o użytkowniku:")
-print("name:", name, "\nage:", age, "\ncity:", city)
+# Sposób 1: Zapis w jednej linijce:
+print(
+"Infromacje o użytkowniku:", "\n",
+"name:", name, "\n", "age:", age, "\n", "city:", city, "\n")
 
-print("")
-print("")
 
-#Wersja elegancka:
-print("Informacje o użytkowniku: ")
-print("name:", name)
-print("age:", age)
-print("city:", city)
+#Sposób 1: Zapis z uporządkowaną strukturą:
+print(
+"Informacje o użytkowniku: ", "\n",
+"name:", name, "\n",
+"age:", age, "\n",
+"city:", city, "\n")
 
+
+#Sposób 2: Zapis wyświetlający informacje o użytkowniku wewnątrz zdań:
+print("Mam na imię " + name + ". " + "Liczę " + str(age) + " lat" + ". " + "Zamieszkuję " + city + ".")
