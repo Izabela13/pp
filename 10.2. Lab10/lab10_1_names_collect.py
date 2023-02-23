@@ -5,13 +5,18 @@
 • wyświetlić w podsumowaniu jakie imiona pobrał od użytkownika.
 """
 
-amount = int(input("Wprowadź liczbę imion, jakie chcesz wprowadzić: "))
-names = []
+print("Możesz utworzyć własny zbiór imion.")
+amount = int(input("Podaj, ile imion chcesz wprowadzić do zbioru: "))
+print("Teraz wprowadź imiona. Pamiętaj, że ilość wprowadzanych imion musi odpowiadać podanej liczbie imion.")
 
-i = amount
+print("")
 
-for i in range(amount):
-    if i <= amount:
-        names.append(input("Wprowadź " + str(i + 1) + " imię: "))
-print("Pobrano następujący zbiór imion:", names)
+names = [] # lista imion
 
+counter = 0 # początek listy
+
+for name in range(amount):
+    counter += 1
+    names.append(input("Podaj " + str(counter) + " imię: "))
+else:
+    print("Oto lista wprowadzonych przez Ciebie imion: ", names)
