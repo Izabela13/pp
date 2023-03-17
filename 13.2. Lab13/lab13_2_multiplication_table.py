@@ -1,30 +1,22 @@
 """
-2. Korzystając z rekurencji wypisz na ekranie tabliczkę mnożenie do 100.
+2. Korzystając z rekurencji wypisz na ekranie tabliczkę mnożenia do 100.
 """
 
-# def fib(n):
-#     if n < 1:
-#         return None
-#     if n < 3:
-#         return 1
-#
-#     # użyjemy informacji, które są wcześniej
-#     return fib(n - 1) + fib(n - 2)
-#
-# for n in range(1, 10):
-#     print(n, "->", fib(n))
+def multiplication_table(x, y):
+
+    if x == 10 and y == 10:
+        return
+
+    elif x <= 10 and y <= 10:
+        print(str(x), "x", str(y), "=", str(x * y))
+        y += 1
+        if y == 10:
+            print(str(x), "x", str(y), "=", str(x * y))
+            print()
+            x += 1
+            y = 1
+        multiplication_table(x, y)
 
 
-# def multiplication(n, m):
-#     n * m
-#
-#     for n in range(1, 11):
-#         print(n, "*", n, "=", multiplication(n))
-
-def multiplication(m, n):
-
-    for m in range(1, 11):
-        for n in range(1, 11):
-            m * n
-
-    return print(m*n)
+print("\nTabliczka mnożenia do 100 (dla liczb od 1 do 10).\n")
+multiplication_table(1, 1)
