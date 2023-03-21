@@ -10,9 +10,14 @@ phone_numbers = \
           "Ada":   123123123,
           "Karol": 321654978}
 
-phone_search = input("Podaj imię, aby wyświetlić numer telefonu do osoby: ")
+print("WYSZUKIWARKA NUMERÓW TELEFONÓW \n")
 
-if phone_search in phone_numbers:
-    print("Numer telefonu:", phone_numbers[phone_search])
-else:
-    print("Brak numeru telefonu do wyświetlenia.")
+while True:
+    phone_search = input("Podaj imię, aby wyświetlić numer telefonu do osoby: ")
+    if phone_search in phone_numbers:
+        print("Numer telefonu:", phone_numbers[phone_search], "\n")
+    elif phone_search == "":
+        print("Zakończono wyszukiwanie.")
+        break
+    else:
+        print("Brak numeru telefonu do osoby o imieniu", phone_search + ". \n")
