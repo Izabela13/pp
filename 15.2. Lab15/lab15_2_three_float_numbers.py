@@ -3,17 +3,18 @@
 Uwzględnij możliwość pomyłki użytkownika.
 """
 
-print("Podaj trzy liczby zmiennoprzecinkowe.")
+print("Podaj trzy liczby zmiennoprzecinkowe. \n")
 
 counter = 1
-float_list = []
+floating_numbers = []
 
 while counter <= 3:
     try:
         number = float(input("Podaj " + str(counter) + " liczbę zmiennoprzecinkową: "))
-        float_list.append(number)
+        floating_numbers.append(number)
         counter += 1
     except:
-        print("To nie jest liczba.")
+        print("Podana wartość nie jest liczbą. Spróbuj ponownie. \n")
 
-print(float_list)
+print("")
+print("Wprowadzone liczby:", floating_numbers)
