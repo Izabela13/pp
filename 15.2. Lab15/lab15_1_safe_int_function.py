@@ -5,12 +5,16 @@ i zwrócić go. Jeśli jednak nie jest to możliwe (tj. jeśli wystąpi wyjątek
 powinna zwrócić None.
 """
 
-# 1
-def safe_int():
+
+def safe_int(arg):
     try:
-        arg = int(input("Podaj wartość: "))
-        return arg
-    except ValueError:
+        return int(arg)
+    except:
         return None
 
-print(safe_int())
+
+# Sprawdzanie działania funkcji safe_int
+print(safe_int([1, 2, 3]))  # None
+print(safe_int(True))       # 1
+print(safe_int("jeden"))    # None
+print(safe_int(2.1))        # 2
