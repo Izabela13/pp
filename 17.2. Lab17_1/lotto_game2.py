@@ -1,1 +1,0 @@
-from games.lotto import get_game_system
