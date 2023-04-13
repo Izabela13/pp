@@ -81,44 +81,47 @@ Alfabet: AĄBCĆDEĘFGHIJKLŁMNŃOÓPRSŚTUWYZŹŻ
   Szyfr: CĆDEĘFGHIJKLŁMNŃOÓPRSŚTUWYZŹŻAĄB
 """
 
-delta = 3 # do zmiennej przypisujemy parametr przesunięcia
+# Przesunięcie może się zmieniać. Jeżeli zmienią się okoliczności, deltą będziemy mogli manipulować.
+delta = 3  # do zmiennej przypisujemy parametr przesunięcia.
 # wersja bez polskich znaków
 
-# print(ord("A")) # 65 - punkt startowy
-# print(ord("Z")) # 90 - punkt końcowy
+# print(ord("A")) # 65 - punkt kodowy dla znaku pierwszego - startowy
+# print(ord("Z")) # 90 - punkt kodowy dla znaku pierwszego - końcowy
 
-for i in range(ord("A"), ord("Z") + 1):
+# Wygenerowanie alfabetu
+for i in range(ord("A"), ord("Z") + 1):  # zaczynamy od wartości 65 do 90 + 1 (od "A" do "Z")
     print(chr(i), end="")
 # ABCDEFGHIJKLMNOPQRSTUVWXYZ
 
 # print()
 
 # # Pętla dla zmiany znaku kodowego
-# for i in range(ord("A") + delta, ord("Z") + 1 + delta):
+# for i in range(ord("A") + delta, ord("Z") + 1 + delta):  # pętla z przesunięciem
 #     print(chr(i), end="")
-# # DEFGHIJKLMNOPQRSTUVWXYZ[\] - przy XYZ trzeba zawinąć do ABC
-
+# # DEFGHIJKLMNOPQRSTUVWXYZ[\] - przy XYZ trzeba zawinąć do ABC, bo pojawiły się znaki [\]
+# # Jeżeli indeks jest powyżej wartości punktu kodowego "Z", to powinniśmy skorygować indeks.
 print()
 
 for i in range(ord("A") + delta, ord("Z") + 1 + delta):
     if i > ord("Z"):
-        i -= ord("Z") - ord("A") + 1
+        i -= ord("Z") - ord("A") + 1 # korekta wartości punktu kodowego między "Z" i "A"
     print(chr(i), end="")
-# DEFGHIJKLMNOPQRSTUVWXYZABC
-
+# DEFGHIJKLMNOPQRSTUVWXYZABC # jeżeli wartość punktu kodowego wyjdzie poza 90, wróci do wartości 65
+# # Do tego etapu mamy napisany kod jakbyśmy chcieli coś zakodować tym szyfrem.
+# # Teraz kod trzeba przekształcić tak, aby odkodować zaszyfrowaną wiadomość.
 print()
 
 
-# Deszyfrowanie - zapisać funkcję do deszyfrowania
+# Deszyfrowanie - będziemy pomniejszać znaki zaszyfrowane o deltę.
 
 # Funkcja rozkodowująca jedną literę
-def decode_letter(letter, delta): # jaka litera i o ile przesunąć
-    if letter < "A" or letter > "Z": # jeżeli w kodowaniu trafi się spacja lub przecinek, to chcemy, żeby wróciły te same znaki
-        return letter
+def decode_letter(letter, delta): # parameterem wejściowym będzie litera "letter" i przesunięcie "delta"
+    if letter < "A" or letter > "Z": # jeżeli w kodowaniu trafi się spacja lub przecinek, to chcemy, żeby...
+        return letter                # ... program zwrócił te znaki.
     n = ord(letter) - delta # punkt kodowy zmiennej
     # zawijanie liter
     if n < ord("A"):
-        n += ord("Z") - ord("A") + 1
+        n += ord("Z") - ord("A") + 1 # zawijanie znaków - dodawanie różnicy
     return chr(n)
 # Funkcja do rozszyfrowania jednej litery
 
@@ -131,8 +134,8 @@ print()
 def decode(string, delta): # punktem wejściowym będzie string, który będzie przesuwany o deltę (która może się zmienić)
     decoded = ""
     for char in string:
-        decoded += decode_letter(char, delta)
-    return decoded
+        decoded += decode_letter(char, delta) # za każdym razem, gdy zdekodujemy literę, będziem ją dodawać do "decoded"
+    return decoded  # parametrem wyjściowym będzie string
 
 print(decode("VWXGLD SRGBSORPRZH - SURJUDPLVWD SBWKRQ", delta))
 # STUDIA PODYPLOMOWE - PROGRAMISTA PYTHON
