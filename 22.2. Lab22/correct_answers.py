@@ -1,63 +1,63 @@
-# Zadanie 1
+# # Zadanie 1:
 
-# class Employee():
-#     def __init__(self, firstname, lastname, age, salary):
-#         self.__firstname = firstname
-#         self.__lastname = lastname
-#         self.__age = age
-#         self.__salary = salary
-#
-#     def getsalary(self):
-#         return self.__salary
-#
-#     def getfullname(self):
-#         return self.__firstname + " " + self.__lastname
-#
-#     def getage(self):
-#         return self.__age
-#
-#     def risesalary(self, percent=10):
-#         self.__salary *= percent / 100 + 1
-#
-#
-# def payroll(employee):
-#     print("Lista płac")
-#     print("-" * 50)
-#
-#     for e in employee:
-#         print(e.getfullname(), "wiek:", e.getage(), "lat,", "pensja:", e.getsalary(), "zł")
-#
-#
-# employee = []
-# employee.append(Employee("Jan", "Kowalski", 25, 3800))
-# employee.append(Employee("Edmund", "Kaczmarczyk", 45, 7000))
-# employee.append(Employee("Natalia", "Nowak", 60, 15200))
-#
-# payroll(employee)
-# employee[0].risesalary()
-# employee[2].risesalary(30)
-# payroll(employee)
+class Employee():
+    def __init__(self, firstname, lastname, age, salary):
+        self.__firstname = firstname
+        self.__lastname = lastname
+        self.__age = age
+        self.__salary = salary
+
+    def getsalary(self):
+        return self.__salary
+
+    def getfullname(self):
+        return self.__firstname + " " + self.__lastname
+
+    def getage(self):
+        return self.__age
+
+    def risesalary(self, percent=10):  # domyślnie 10%
+        self.__salary *= percent / 100 + 1  # przemnażanie właściwości przez wartość procentową
 
 
-# Zadanie 2: instance_counter
-#
-# class C:
-#     counter = 0
-#
-#     def __init__(self):
-#         C.counter += 1
-#
-#     def get_counter(self):
-#         return C.counter
-#
-# for i in range(100):
-#     obj = C() # nie musimy do niczego przypisywać tych obiektów
-#
-# print("Utworzono obiektów:", obj.get_counter())
+def payroll(employee):  # dodawanie ulepszenia (w funkcji poza klasą)
+    print("Lista płac")
+    print("-" * 50)
+
+    for e in employee:
+        print(e.getfullname(), "wiek:", e.getage(), "lat,", "pensja:", e.getsalary(), "zł")
+
+
+employee = []
+employee.append(Employee("Jan", "Kowalski", 25, 3800))
+employee.append(Employee("Edmund", "Kaczmarczyk", 45, 7000))
+employee.append(Employee("Natalia", "Nowak", 60, 15200))
+
+payroll(employee)
+employee[0].risesalary()
+employee[2].risesalary(30)
+payroll(employee)
+
+
+# # Zadanie 2: instance_counter
+
+class C:
+    counter = 0  # zmienna klasowa. Klasa nie będzie miała innych właściwości, poza konstruktorem
+
+    def __init__(self):
+        C.counter += 1  # zwiększanie countera o 1 kiedy powstaje nowy obiekt
+
+    def get_counter(self):
+        return C.counter
+
+for i in range(100):
+    obj = C()  # nie musimy do niczego przypisywać tych obiektów
+
+print("Utworzono obiektów:", obj.get_counter())
 
 
 
-# Zadanie 3
+# # Zadanie 3
 
 class Book:
     def __init__(self, title, author, publisher, year):
