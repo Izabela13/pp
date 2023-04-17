@@ -5,21 +5,25 @@ zabezpieczyć zmienne instancji przed przypadkowym nadpisaniem (enkapsulacja).
 
 import random
 
-class Dice: # obiekt
-    def __init__(self): # konstruktor
-        self.value = None # wartość kości
+# Jednak kość
+class Dice:
+    def __init__(self):
+        self.__value = None
 
-    def __throw(self):
-        self.value = random.randint(1, 6)
+    def throw(self):
+        self.__value = random.randint(1, 6)
 
-    def __str__(self): #wyświetli obiekt
-        return "[{}]".format(self.value)  # w nawiasach kwadratowych będzie pojawiać się wartość
+    def __str__(self):
+        return "[{}]".format(self.__value)
+
+    def get__value(self):
+        return self.__value
 
 
 # # sprawdzanie
 # dice = Dice()
-# print(dice) # [None] - kostka trzymana w kieszeni, nie ma wartości
-# dice.throw()
+# print(dice)  # [None] - kostka trzymana w kieszeni, nie ma wartości
+# dice.throw() # po rzucie kością wyświetli się wartość od 1 do 6
 # print(dice)
 
 
@@ -27,24 +31,23 @@ class Dice: # obiekt
 class DicePair:
 
     def __init__(self):
-        self.pair = [Dice(), Dice()] # lista, która ma dwa obiekty kości
+        self.__pair = [Dice(), Dice()]
 
-    def __throw(self):
-        self.pair[0].throw()
-        self.pair[1].throw()
+    def throw(self):
+        self.__pair[0].throw()
+        self.__pair[1].throw()
 
-# sprawdzenie, czy nie rzuciliśmy dwóch tych samych wartości. Rzucamy do momentu uzyskania dubletu
-
-    def __is_double(self):
-        return self.pair[0].value == self.pair[1].value
+# Rzucamy do momentu uzyskania dubletu.
+    def is_double(self):
+        return self.__pair[0].get__value() == self.__pair[1].get__value()
 
     def __str__(self):
-        return str(self.pair[0]) + str(self.pair[1])
+        return str(self.__pair[0]) + str(self.__pair[1])
 
 
-dices = DicePair() #TODO
+dices = DicePair()
 while True:
-    dices._DicePair.__throw()
+    dices.throw()
     print(dices)
-    if dices._DicePair.__is_double():
+    if dices.is_double():
         break

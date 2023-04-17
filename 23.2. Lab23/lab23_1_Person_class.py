@@ -8,15 +8,23 @@
 
 
 class Person:
-    # def __init__(self, name, age):
-    #     self.__name = name
-    #     self.__age = age
-    #     print("Inicjalizuję obiekt!")
-
-    def __get_name(self, name):
+    def __init__(self, name, age):
         self.__name = name
-        print("Jestem metodą") # TODO
-
-    def __get_age(self, age):
         self.__age = age
-        print("To jest metoda publiczna") # TODO
+
+    def presentation(self):
+        print("Jestem " + self.__name + ". Mam lat " + str(self.__age) + ".")
+
+
+people = []
+
+people.append(Person("Ellie", 14))
+people.append(Person("Joel", 52))
+people.append(Person("Ethan", 35))
+people.append(Person("Jill", 30))
+people.append(Person("Leon", 21))
+
+
+print("\nAkcja przedstawiania się każdego obiektu klasy Person.")
+for person in people:
+    person.presentation()
